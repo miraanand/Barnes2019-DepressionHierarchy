@@ -775,7 +775,7 @@ void CalculateMarginalVolumes(
     std::vector<uint32_t> cell_counts     (deps.size(), 0);
     std::vector<double>   total_elevations(deps.size(), 0);
 
-    #pragma omp for
+    #pragma omp for schedule(dynamic, 5000)
     for(unsigned int i=0;i<dem.size();i++){
       ++progress;
       const auto my_elev = dem(i);
